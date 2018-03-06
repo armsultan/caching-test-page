@@ -1,43 +1,30 @@
-**Website to test HTTPS Cache**
+# Website to test HTTP/HTTPS Cache
 -----
-A Static Website to test the download times of large images and hundreds of HTTP requests over HTTP1 and HTTP2
+A static website that include several HTML files through iFrames to demonstrate various cache / no cache methods
 
-Hope to add more tests later...
+The website will need to be hosted on webserver capable of setting response headers - Nginx configurations are provided
 
-Web performance tools
+This is a suitable website for testing proxy caches such as Nginx
+
+This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
 -----
 
-First, it's beneficial to test with Latency, either with a Wan Emulator tools or accessing the web content over the internet, over real network latency
+## Testing and troubleshooting
 
-To confirm HTTP/2 is faster you can use various web performance measurement tools:
+You will need to inspect HTML and HTTP headers to confirm cache control directives are set. You can use various web developtment / network tools to inspect these details:
 
-**Client Side Tools:**
+#### Client Side Tools
 
  - [Chrome Developer Tools](https://developer.chrome.com/devtools)
  - [Firebug](http://getfirebug.com/)
  - [Fiddler](http://getfirebug.com/)
 
-**A great list of online Tools:**
+#### A great list of online Tools:**
  - [16 Website Speed Test Tools for Analyzing Web Performance](https://www.keycdn.com/blog/website-speed-test-tools/)
 
 
-HTTP2 Cheat Sheet
+# Cache Control Cheat Sheet
 -----
-To confirm HTTP/2 is working you can use various tools:
-
-**Chrome Developer Tools** 
-Chrome Developer Tools (View -> Developer -> Developer Tools) and reload the page (View -> Reload This Page). Then navigate to the Network tab, click on table header row that starts with Name, right-click on it, and select the Protocol option.
-
-Now you should see h2 (which stands for HTTP/2) in a new column for your website serving HTTP/2 content.
-
-**Firefox Firebug:** 
-Open Firebug and navigate to the Net (Network) tab, on the sub menu select 'All' to see all HTTP requests. Also click on table header row that starts with Name, right-click on it, and select the Protocol option. Then reload the page to see Firebug populate a waterfall. 
-
-Now you should see h2 (which stands for HTTP/2) in a new column for your website serving HTTP/2 content.
-
-When inspecting a request's HTTP headers, you will also see the header value X-Firefox-Spdy: h2 
-
-**Image Credit:**
- - Surfer: https://unsplash.com/@seefromthesky
- - Rooster:https://unsplash.com/@heytowner
- - Flowers:https://unsplash.com/@charlieharutaka
+ 
+**Credit and resources:**
+ - This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
