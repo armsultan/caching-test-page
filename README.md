@@ -25,7 +25,7 @@ You will need to inspect HTML and HTTP headers to confirm cache control directiv
 
 # Cache Control Cheat Sheet
 
-Enter some links here
+Enter some links here.
 
 **Credit and resources:**
  - This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
