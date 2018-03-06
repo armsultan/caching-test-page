@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTTPS Caching Test Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!--[if lt IE 9]><script src="/js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+    <script src="/js/performance.js" media="all"></script>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="/css/fonts.css">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="/css/normalize.css">
+
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="/css/milligram_v2.css">
+
+    <!-- Custom CSS Style -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <h1> HTTPS Caching Test Page
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="column">
+
+
+                <h3>
+                    Test Pages
+                </h3>
+                <h4>
+                    Cache me
+                </h4>
+                <p>These pages are intended to be cached</p>
+                <iframe src="/test_pages/NoHeaders.html"></iframe>
+                <iframe src="/test_pages/CacheControlPublic.html"></iframe>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <h4>
+                    Don't Cache
+                </h4>
+                <p>These pages use methods that successfully prevent caching in at least one browser</p>
+                <iframe src="/test_pages/CacheControlNoStore.html"></iframe>
+
+                <iframe src="/test_pages/PragmaNoCache.html"></iframe>
+
+                <iframe src="/test_pages/MetaPragmaNoCache.html"></iframe>
+
+                <iframe src="/test_pages/CacheControlNoCache.html"></iframe>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <h4>
+                    Failed to cache 
+                </h4>
+                <p>These pages use methods that fail to prevent caching in any browser</p>
+                <iframe src="/test_pages/MetaCacheControlNoStore.html"></iframe>
+
+                <iframe src="/test_pages/CacheControlPrivate.html"></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

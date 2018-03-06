@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="/css/fonts.css">
+        <!-- Milligram CSS minified -->
+        <link rel="stylesheet" href="/css/milligram_v2.css">
+
+        <!-- highlight JS syntax coloring -->
+    <link rel="stylesheet" href="/css/github.css">
+    <script src="/js/highlight.pack.js"></script>
+
+<title>Pragma: no-cache</title>
+</head>
+<body>
+        <h5>Pragma: no-cache</h5>
+
+<p>
+This page is named <code>PragmaNoCache.html</code>, and was sent with the response
+header <b>Pragma: no-cache</b>.  This header is non-standard, but many
+sites continue to rely on it to prevent caching anyway.  This page
+will not be disk cached by Internet Explorer.  No other modern
+browsers recognize the Pragma header for this purpose, and with the
+exception of those browsers that do not cache HTTPS content at all,
+will write this page to the disk cache.
+</p>
+<pre>
+        <code class="nginx">
+        # Webserver config
+        server {
+            # ...
+            location /PragmaNoCache.html {
+                add_header Pragma "no-cache";
+        }
+        </code>
+    </pre>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body></html>

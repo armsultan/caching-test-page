@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="/css/fonts.css">
+        <!-- Milligram CSS minified -->
+        <link rel="stylesheet" href="/css/milligram_v2.css">
+
+        <!-- highlight JS syntax coloring -->
+    <link rel="stylesheet" href="/css/github.css">
+    <script src="/js/highlight.pack.js"></script>
+
+<title>meta tag cache control (no-cache)</title>
+</head>
+<body>
+        <h5>meta tag cache control (no-cache)</h5>
+
+<p>
+This page is named <code>MetaPragmaNoCache.html</code>, and was sent with the HTML
+tag <b>&lt;meta http-equiv="Pragma" content="no-cache"&gt;</b>.  This
+tag is non-standard, but many sites continue to rely on it to prevent
+caching anyway.  This page will not be disk cached by Internet
+Explorer.  No other modern browsers recognize the Pragma header for
+this purpose, and with the exception of those browsers that do not
+cache HTTPS content at all, will write this page to the disk cache.
+</p>
+
+<pre>
+        <code class="html">
+                &lt;!-- The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+                The http-equiv attribute can be used to simulate an HTTP response header.--&gt;
+                &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;
+            </code>
+    </pre>
+<script>hljs.initHighlightingOnLoad();</script>
+</body></html>
