@@ -2,9 +2,9 @@
 
 A static website that include several HTML files through iFrames to demonstrate various cache / no cache methods
 
-The website will need to be hosted on webserver capable of setting response headers - Nginx configurations are provided
+The website will need to be hosted on webserver capable of setting response headers - Nginx configurations snippets are provided
 
-This is a suitable website for testing proxy caches such as Nginx
+This is a suitable website for testing browser and proxy caches 
 
 This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
 
@@ -25,7 +25,7 @@ You will need to inspect HTML and HTTP headers to confirm cache control directiv
 
 # Cache Control Cheat Sheet
 
-Enter some links here.
+## Disable All caching
 
 **Credit and resources:**
  - This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
