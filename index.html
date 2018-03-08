@@ -22,113 +22,122 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <h1> HTTP Caching Test Page
-                </h1>
-                <h5>Index</h5>
-                <ul>
-                    <li>
-                        <a href="#CacheDirectives">Cache directives</a>
-                    </li>
-                    <li>
-                        <a href="#NoCacheDirectives">No cache directives</a>
-                    </li>
-                    <li>
-                        <a href="#IneffectiveCacheDirectives">Ineffective cache directives</a>
-                    </li>
-                    <li>
-                        <a href="#MaxAgeVsExpires">max-age vs expires</a>
-                    </li>
-                    <li>
-                        <a href="#CacheDirectivesForProxies">Cache directives for proxies (shared caches)</a>
-                    </li>
-                    <li>
-                        <a href="#CacheDirectivesForGateway">Cache directives for gateway caches (surrogate caches)</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
 
     <div class="container">
-        <div class="row">
-            <div class="column">
-                <a name="CacheDirectives"></a>
-                <h2>
-                    Cache directives
-                </h2>
-                <p>These pages are intended to be cached</p>
-                <iframe src="/caching_test_pages/NoHeaders.html"></iframe>
-                <iframe src="/caching_test_pages/CacheControlPublic.html"></iframe>
-
+        <nav>
+            <div class="row">
+                <div class="column">
+                    <h1> HTTP Caching Test Page
+                    </h1>
+                    <h5>Index</h5>
+                    <ul>
+                        <li>
+                            <a href="#CacheDirectives">Cache directives</a>
+                        </li>
+                        <li>
+                            <a href="#NoCacheDirectives">No cache directives</a>
+                        </li>
+                        <li>
+                            <a href="#IneffectiveCacheDirectives">Ineffective cache directives</a>
+                        </li>
+                        <li>
+                            <a href="#MaxAgeVsExpires">max-age vs expires</a>
+                        </li>
+                        <li>
+                            <a href="#CacheDirectivesForProxies">Cache directives for proxies (shared caches)</a>
+                        </li>
+                        <li>
+                            <a href="#CacheDirectivesForGateway">Cache directives for gateway caches (surrogate caches)</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <a name="NoCacheDirectives"></a>
-                <h2>
-                    No cache directives
-                </h2>
-                <p>These pages use methods that successfully prevent caching in at least one browser</p>
-                <iframe src="/caching_test_pages/CacheControlNoStore.html"></iframe>
-                <iframe src="/caching_test_pages/CacheControlNoCache.html"></iframe>
-                <iframe src="/caching_test_pages/PragmaNoCache.html"></iframe>
-                <iframe src="/caching_test_pages/MetaPragmaNoCache.html"></iframe>
+        </nav>
+        <main>
+            <div class="row">
+                <div class="column">
+                    <a name="CacheDirectives"></a>
+                    <h2>
+                        Cache directives
+                    </h2>
+                    <p>These pages are intended to be cached</p>
+                    <iframe src="/caching_test_pages/NoHeaders.html"></iframe>
+                    <iframe src="/caching_test_pages/CacheControlPublic.html"></iframe>
 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <a name="IneffectiveCacheDirectives"></a>
+            <div class="row">
+                <div class="column">
+                    <a name="NoCacheDirectives"></a>
+                    <h2>
+                        No cache directives
+                    </h2>
+                    <p>These pages use methods that successfully prevent caching in at least one browser</p>
+                    <iframe src="/caching_test_pages/CacheControlNoStore.html"></iframe>
+                    <iframe src="/caching_test_pages/CacheControlNoCache.html"></iframe>
+                    <iframe src="/caching_test_pages/PragmaNoCache.html"></iframe>
+                    <iframe src="/caching_test_pages/MetaPragmaNoCache.html"></iframe>
 
-                <h2>
-                    Ineffective cache directives
-                </h2>
-                <p>These pages use methods that fail to prevent caching in any browser</p>
-                <iframe src="/caching_test_pages/MetaCacheControlNoStore.html"></iframe>
-                <iframe src="/caching_test_pages/CacheControlPrivate.html"></iframe>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="column">
+                    <a name="IneffectiveCacheDirectives"></a>
 
-        <div class="row">
-            <div class="column">
-                <a name="MaxAgeVsExpires"></a>
-                <h2>
-                    max-age vs. expires
-                </h2>
-                <p>These directices set the maximum number of seconds the resource should be considered fresh
-                </p>
-                <iframe src="/caching_test_pages/Expires.html"></iframe>
-                <iframe src="/caching_test_pages/CacheControlMaxAge.html"></iframe>
+                    <h2>
+                        Ineffective cache directives
+                    </h2>
+                    <p>These pages use methods that fail to prevent caching in any browser</p>
+                    <iframe src="/caching_test_pages/MetaCacheControlNoStore.html"></iframe>
+                    <iframe src="/caching_test_pages/CacheControlPrivate.html"></iframe>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="column">
-                <a name="CacheDirectivesForProxies"></a>
-                <h2>
-                    Cache directives for shared caches (proxy caches)
-                </h2>
-                <p>These pages use methods that prevent caching in shared caches (e.g., proxies)</p>
-                <iframe src="/caching_test_pages/CacheControlSmaxage.html"></iframe>
-                <iframe src="/caching_test_pages/CacheControlPrivate.html"></iframe>
+            <div class="row">
+                <div class="column">
+                    <a name="MaxAgeVsExpires"></a>
+                    <h2>
+                        max-age vs. expires
+                    </h2>
+                    <p>These directices set the maximum number of seconds the resource should be considered fresh
+                    </p>
+                    <iframe src="/caching_test_pages/Expires.html"></iframe>
+                    <iframe src="/caching_test_pages/CacheControlMaxAge.html"></iframe>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="column">
+                    <a name="CacheDirectivesForProxies"></a>
+                    <h2>
+                        Cache directives for shared caches (proxy caches)
+                    </h2>
+                    <p>These pages use methods that prevent caching in shared caches (e.g., proxies)</p>
+                    <iframe src="/caching_test_pages/CacheControlSmaxage.html"></iframe>
+                    <iframe src="/caching_test_pages/CacheControlPrivate.html"></iframe>
+
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <a name="CacheDirectivesForGateway"></a>
-                <h2>
-                    Cache directives for gateway caches (surrogate caches)
-                </h2>
-                <p>These pages use methods that applies to gateway caches (also known as surrogate caches)
-                </p>
-                <iframe src="/caching_test_pages/SurrogateControl.html"></iframe>
+            <div class="row">
+                <div class="column">
+                    <a name="CacheDirectivesForGateway"></a>
+                    <h2>
+                        Cache directives for gateway caches (surrogate caches)
+                    </h2>
+                    <p>These pages use methods that applies to gateway caches (also known as surrogate caches)
+                    </p>
+                    <iframe src="/caching_test_pages/SurrogateControl.html"></iframe>
+                </div>
             </div>
-        </div>
+        </main>
+        <footer>
+            <div class="row">
+                <div class="column">
+                    By
+                    <a href="https://github.com/armsultan" target="_blank">Armand</a> 2018
+                </div>
+            </div>
+        </footer>
     </div>
 
 

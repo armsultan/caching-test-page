@@ -68,6 +68,9 @@
               This page was sent without any cache-related headers or meta tags. It should be disk cached by all browsers, except those
               that exclude HTTPS pages from disk caching by default.
             </p>
+            <p>
+              <code>HTTP/1.1</code> defines no caching behaviour for a resource served with no cache-related headers. If a resource is sent with no <code>cache-control</code> or <code>expires</code> headers then you must assume the client will make a regular (non-conditional) request the next time the same resources is requested.
+            </p>
           </div>
         </div>
       </article>
