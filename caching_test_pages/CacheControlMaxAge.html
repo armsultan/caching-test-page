@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>Cache-Control: max-age</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            Cache-Control: max-age
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                      CacheControlMaxAge.html
+                    </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Yes when
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Yes when
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>This page was sent with the
+              <code>Cache-Control: max-age</code> response header with a future date, for example,
+              <code>Cache-Control: max-age 3600</code>. This header is part of the
+              <code>HTTP/1.1</code> standard and specifies the maximum amount of time a resource will be considered fresh. Contrary to the depreciated
+              <code>Expires</code> directive, this directive is relative to the time of the request.</p>
+            <pre><code class="nginx">
+                    # Webserver config
+                    server {
+                        # ...
+                        location /CacheControlMaxAge.html {
+                          expires @1h; # Set expires to 1hr from now
+                        }
+                    }
+                </code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <div class="row">
+          <div class="column">
+            <h6>Links to more information:</h6>
+            <ul>
+              <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" target="_blank">MSN web docs</a>
+                <a href="https://www.w3.org/TR/html5/document-metadata.html#the-meta-element" target="_blank">HTML5 docs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

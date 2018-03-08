@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>Expires</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            Expires
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                  Expires.html
+              </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Yes when
+                    <code>max-age</code> and
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Yes when
+                    <code>max-age</code> and
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>This page was sent with the
+              <code>Expires</code> response header with a future date, for example,
+              <code>Expires: Thu, 31 Dec 2037 23:55:55 GMT</code>. This header is part of the
+              <code>HTTP/1.0</code> standard, and deprecated in
+              <code>HTTP 1.1</code> and should be avoid when possible, but it is still widely supported and used. If there is a
+              <code>Cache-Control</code> header with the
+              <code>max-age</code> or
+              <code>"s-maxage"</code> directive in the response, the
+              <code>Expires</code> header is ignored.
+              <p>Invalid dates, like the value 0, represent a date in the past and mean that the resource is already expired.
+              </p>
+            </p>
+            <pre><code class="nginx">
+                  # Webserver config
+                  server {
+                      # ...
+                      location /Expires.html {
+                        add_header "Expires" @1h; # Set expires to 1hr from now
+                      }
+                  }
+                  </code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank">Cache-Control</a>
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

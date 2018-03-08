@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="/css/fonts.css">
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="/css/milligram_v2.css">
+    <!-- highlight JS syntax coloring -->
+    <link rel="stylesheet" href="/css/github.css">
+    <!-- Custom CSS Style -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Code Syntax highlighting  -->
+    <script src="/js/highlight.pack.js"></script>
+    <title>Surrogate-Control</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="column">
+                    <h4>
+                        Surrogate-Control
+                    </h4>
+                </div>
+            </div>
+        </header>
+        <main>
+            <article>
+                <div class="row">
+                    <div class="column">
+                        <h5>
+                            <code>
+                  SurrogateControl.html
+              </code>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cache Type</th>
+                                    <th>Will Cache?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Browser</td>
+                                    <td>Ignore</td>
+                                </tr>
+                                <tr>
+                                    <td>Proxy</td>
+                                    <td>Yes - Gateway caches who support this directive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <p>
+                            This page was sent with the
+                            <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should
+                            handle response entities, with control directives. It is part of a
+                            <a href="https://www.w3.org/TR/edge-arch/"
+                                target="_blank">draft spec</a>, but some popular gateway caches (i.e.
+                            <strong>Squid</strong> and
+                            <strong>Fastly</strong>) already support it. The gateway caches that don't support
+                            <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
+                            <strong>Akamai</strong> has
+                            <code></code>Edge-Control</code>).
+                        </p>
+                        <p>
+                            Currently defined directives control processing and cache behavior.
+                        </p>
+                        <pre><code class="nginx">
+                      # Webserver config
+                      server {
+                          # ...
+                          location /SurrogateControl.html {
+                              add_header Surrogate-Control "max-age=3600";
+                      }
+                  </code></pre>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <h6>Links to more information:</h6>
+                <ul>
+                    <li>
+                        <a href="https://docs.fastly.com/guides/tutorials/cache-control-tutorial" target="_blank">Surrogate-Contro</a>
+                    </li>
+                </ul>
+            </aside>
+        </main>
+        <footer>
+            <div class="row">
+                <div class="column">
+                    <a href="https://github.com/armsultan" target="_blank">:)</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>meta tag Cache-Control: no-store</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            meta tag Cache-Control: no-store
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                  MetaCacheControlNoStore.html
+              </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Ignore and cache</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Ignore and cache</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>
+              This page was sent with the HTML tag
+              <code>&lt;meta http-equiv="Cache-Control"
+            content="no-store"&gt;</code>. No browsers will recognize the
+              <code>Cache-Control</code> header when it is specified in a meta tag; it must be included as a "real" HTTP response header.
+              <code>"meta http-equiv"</code> does not have a value
+              <code>"Cache-Control"</code>
+            </p>
+            <p>
+              according to
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" target="_blank">MDN Doc</a> and
+              <a href="https://www.w3.org/TR/html5/document-metadata.html#the-meta-element" target="_blank"></a>HTML5 Doc</a>
+            </p>
+
+            <p>With the exception of those browsers that do not cache HTTPS content at all, will write this page to the disk
+              cache.
+            </p>
+            <pre><code class="html">
+                      &lt;!-- The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+                      The http-equiv attribute can be used to simulate an HTTP response header.--&gt;
+                      &lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-store&quot;&gt;</code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" target="_blank">MSN web docs</a>
+            <a href="https://www.w3.org/TR/html5/document-metadata.html#the-meta-element" target="_blank">HTML5 docs</a>
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

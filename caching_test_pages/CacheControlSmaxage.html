@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>Cache-Control: s-maxage</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            Cache-Control: s-maxage
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                  CacheControlSmaxage.html
+              </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Ignore</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>This page was sent with the response header
+              <code>Cache-Control: s-maxage=300</code> (5 minutes). This header is part of the
+              <code>HTTP/1.1</code> standard, and overrides
+              <code> max-age</code> or the
+              <code> Expires</code> header, but it only applies to
+              <strong>shared caches</strong> (e.g., proxies) and is ignored by a private cache.</p>
+
+            <p>
+              For reverse proxies or other caches on servers, it can actually make sense to have shorter
+              <code>s-maxage</code> than
+              <code>maxage</code>, i.e. having the proxy's single check (code>s-maxage</code>) be more frequent than the requests from downstream
+              clients (e.g. browsers) (
+              <code>maxage</code>).
+            </p>
+            <p>
+              A practical example is you might a CDN to check regularly (hourly) for an updated resource on an origin server. However,
+              have an end user cache the response less regularly (hourly); users with cold caches will get the updated version.
+            </p>
+            <p>
+              Conversely, you can set longer
+              <code>s-maxage</code> and
+              <code>maxage</code> to a zero ("
+              <code>0</code>"") valuse so that a CDN caches content but never cache in the browser. That way requests will rarely hit the
+              origin server, and rely on a CDN's API to purge the cached content and force an update on the CDN cache.
+            </p>
+            <pre><code class="nginx">
+                    # Webserver config
+                    server {
+                        # ...
+                        location /CacheControlSmaxage.html {
+                            # Cache on proxies for 5min and no cache (0s) on th browser
+                            add_header Cache-Control "public, s-maxage=300, max-age=0";
+                        }
+                    }
+                    </code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank">Cache-Control</a>
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

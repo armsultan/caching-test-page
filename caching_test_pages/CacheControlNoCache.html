@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>Cache-Control: no-cache</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            Cache-Control: no-cache
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                  CacheControlNoCache.html
+              </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>No</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>This header is part of the
+              <code>HTTP/1.1</code> standard, but is not intended to influence whether a response is cached to persistent storage or not. Instead,
+              it simply requires that a client must first revalidate a cached document with the server before reusing it
+              to satisfy a future request. However, Internet Explorer 9 and earlier interpreted
+              <strong>Cache-Control: no-cache
+              </strong> as equivalent to
+              <strong>Cache-Control: no-store</strong>.
+            </p>
+            <p>No other browsers recognize the Cache-Control: no-cache header for this purpose, and with the exception of those
+              browsers that do not cache HTTPS content at all, will write this page to the disk cache.
+              <i>Exception:</i> like
+              <code>Cache-Control: no-store</code> Internet Explorer 8 and earlier ignore
+              <code>Cache-Control: no-cache</code> when a server (including this one) downgrades to
+              <code>HTTP/1.0</code>.
+            </p>
+            <pre><code class="nginx">
+                    # Webserver config
+                    server {
+                        # ...
+                        location /CacheControlNoCache.html {
+                            add_header Cache-Control "no-cache";
+                        }
+                    }
+            </code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank">Cache-Control</a>
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
