@@ -65,10 +65,16 @@
         <div class="row">
           <div class="column">
             <p>This header is part of the
-              <code>HTTP/1.1</code> standard and instructs caches to not apply transformations or conversions to the resource and does not affect cachability or cache duration
+              <code>HTTP/1.1</code> standard and instructs caches to not apply transformations or conversions to the resource and does not affect
+              cachability or cache duration
             </p>
             <p>
-            The <code>Content-Encoding</code>, <code>Content-Range</code>, <code>Content-Type</code> headers must not be modified by a proxy. A non- transparent proxy might, for example, convert between image formats in order to save cache space or to reduce the amount of traffic on a slow link. The <code>no-transform</code> directive disallows this.
+              The
+              <code>Content-Encoding</code>,
+              <code>Content-Range</code>,
+              <code>Content-Type</code> headers must not be modified by a proxy. A non- transparent proxy might, for example, convert between image
+              formats in order to save cache space or to reduce the amount of traffic on a slow link. The
+              <code>no-transform</code> directive disallows this.
             </p>
             <pre><code class="nginx">
                     # Webserver config

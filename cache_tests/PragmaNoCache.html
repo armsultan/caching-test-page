@@ -23,7 +23,7 @@
       <div class="row">
         <div class="column">
           <h4>
-              Pragma: no-cache
+            Pragma: no-cache
           </h4>
         </div>
       </div>
@@ -41,39 +41,41 @@
         </div>
         <div class="row">
           <div class="column">
-              <table>
-                  <thead>
-                      <tr>
-                          <th>Cache Type</th>
-                          <th>Will Cache?</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>Browser</td>
-                          <td>Yes - Legacy browsers with <code>HTTP/1.0</code> support only</td>
-                      </tr>
-                      <tr>
-                          <td>Proxy</td>
-                          <td>Yes - Legacy caches with <code>HTTP/1.0</code> support only</td>
-                      </tr>
-                  </tbody>
-              </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Yes - Legacy browsers with
+                    <code>HTTP/1.0</code> support only</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Yes - Legacy caches with
+                    <code>HTTP/1.0</code> support only</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="column"></div>
           <div class="column"></div>
         </div>
         <div class="row">
           <div class="column">
-              <p>This page was sent with the
-                  <code>Pragma: no-cache</code> response header. It is used for backwards compatibility with
-                  <code>HTTP/1.0</code> caches where the </ode>Cache-Control</code>
-                  <code>HTTP/1.1</code> header is not yet present.</p>
-              <p>
-                  This page will not be disk cached by Internet Explorer. No other modern browsers recognize the Pragma header for this purpose,
-                  and with the exception of those browsers that do not cache HTTPS content at all, will write this page to
-                  the disk cache.</p>
-              <pre><code class="nginx">
+            <p>This page was sent with the
+              <code>Pragma: no-cache</code> response header. It is used for backwards compatibility with
+              <code>HTTP/1.0</code> caches where the </ode>Cache-Control</code>
+              <code>HTTP/1.1</code> header is not yet present.</p>
+            <p>
+              This page will not be disk cached by Internet Explorer. No other modern browsers recognize the Pragma header for this purpose,
+              and with the exception of those browsers that do not cache HTTPS content at all, will write this page to the
+              disk cache.</p>
+            <pre><code class="nginx">
             # Webserver config
             server {
                 # ...
@@ -86,13 +88,13 @@
         </div>
       </article>
       <aside>
-          <h6>Links to more information:</h6>
-          <ul>
-            <li>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma" target="_blank">Pragma</a>
-            </li>
-          </ul>
-        </aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma" target="_blank">Pragma</a>
+          </li>
+        </ul>
+      </aside>
     </main>
     <footer>
       <div class="row">

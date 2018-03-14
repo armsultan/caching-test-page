@@ -65,8 +65,10 @@
         <div class="row">
           <div class="column">
             <p> This page was sent with the
-                <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should
-                handle response entities, with control directives. This header is part of the <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf of an origin server. Some popular gateway caches (i.e.
+              <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should handle response
+              entities, with control directives. This header is part of the
+              <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf
+              of an origin server. Some popular gateway caches (i.e.
               <strong>Squid</strong> and
               <strong>Fastly</strong>) already support it. The gateway caches that don't support
               <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
@@ -74,7 +76,10 @@
               <code></code>Edge-Control</code>).
             </p>
             <p>
-                The <code>no-store-remote</code> directive has similar semantics to the <code>no-store</code> directive, except that it should only be honored by those surrogates that consider themselves "remote". Generally, this means those that are more than one or two hops from the origin server, such as surrogates in a CDN.
+              The
+              <code>no-store-remote</code> directive has similar semantics to the
+              <code>no-store</code> directive, except that it should only be honored by those surrogates that consider themselves "remote". Generally,
+              this means those that are more than one or two hops from the origin server, such as surrogates in a CDN.
             </p>
             <pre><code class="nginx">
                     # Webserver config

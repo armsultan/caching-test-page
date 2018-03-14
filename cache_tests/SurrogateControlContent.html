@@ -65,8 +65,10 @@
         <div class="row">
           <div class="column">
             <p> This page was sent with the
-                <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should
-                handle response entities, with control directives. This header is part of the <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf of an origin server. Some popular gateway caches (i.e.
+              <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should handle response
+              entities, with control directives. This header is part of the
+              <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf
+              of an origin server. Some popular gateway caches (i.e.
               <strong>Squid</strong> and
               <strong>Fastly</strong>) already support it. The gateway caches that don't support
               <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
@@ -74,7 +76,10 @@
               <code></code>Edge-Control</code>).
             </p>
             <p>
-                The <code>content</code> directive identifies what processing surrogates should perform on the response before forwarding it. The value of the content directive is a left-to-right ordered, space-separated list of capabilities for processing by surrogates.
+              The
+              <code>content</code> directive identifies what processing surrogates should perform on the response before forwarding it. The value
+              of the content directive is a left-to-right ordered, space-separated list of capabilities for processing by
+              surrogates.
             </p>
             <pre><code class="nginx">
                     # Webserver config

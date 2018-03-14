@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="/css/styles.css">
   <!-- Code Syntax highlighting  -->
   <script src="/js/highlight.pack.js"></script>
-  <title>Age <delta-seconds></title>
+  <title>Age
+    <delta-seconds>
+  </title>
 </head>
 
 <body>
@@ -22,7 +24,8 @@
       <div class="row">
         <div class="column">
           <h4>
-            Age <delta-seconds>
+            Age
+            <delta-seconds>
           </h4>
         </div>
       </div>
@@ -72,8 +75,9 @@
         <div class="row">
           <div class="column">
             <p>This page was sent with the
-              <code>Age</code> response header containing the time in seconds the object has been in a proxy cache. It is usually calculated as a difference between the proxy's current date and the Date general header included in the HTTP response.
-              </p>
+              <code>Age</code> response header containing the time in seconds the object has been in a proxy cache. It is usually calculated
+              as a difference between the proxy's current date and the Date general header included in the HTTP response.
+            </p>
             <pre><code class="nginx">
                   ## Cache proxy config
 

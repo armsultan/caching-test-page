@@ -66,15 +66,19 @@
                     <div class="column">
                         <p> This page was sent with the
                             <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should
-                            handle response entities, with control directives. This header is part of the <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf of an origin server. Some popular gateway caches (i.e.
-                          <strong>Squid</strong> and
-                          <strong>Fastly</strong>) already support it. The gateway caches that don't support
-                          <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
-                          <strong>Akamai</strong> has
-                          <code></code>Edge-Control</code>).
+                            handle response entities, with control directives. This header is part of the
+                            <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that
+                            act on behalf of an origin server. Some popular gateway caches (i.e.
+                            <strong>Squid</strong> and
+                            <strong>Fastly</strong>) already support it. The gateway caches that don't support
+                            <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
+                            <strong>Akamai</strong> has
+                            <code></code>Edge-Control</code>).
                         </p>
                         <p>
-                            The <code>max-age</code> directive specifies how long the response entity can be considered fresh, in seconds. After this time, implementations must consider the cached entity stale.
+                            The
+                            <code>max-age</code> directive specifies how long the response entity can be considered fresh, in seconds. After
+                            this time, implementations must consider the cached entity stale.
                         </p>
                         <pre><code class="nginx">
                       # Webserver config

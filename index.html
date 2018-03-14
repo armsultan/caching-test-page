@@ -29,7 +29,7 @@
                 <div class="column">
                     <h1> HTTP Caching Test Page
                     </h1>
-                    <h5>Index</h5>
+                    <h5>Jump to test pages:</h5>
                     <ul>
                         <li>
                             <a href="#HTTP1-1CacheDirectives">
@@ -210,6 +210,14 @@
                     <h2>
                         <code>HTTP 1.0</code> Caching headers
                     </h2>
+                    <p>
+                        The caching mechanism within
+                        <code>HTTP 1.0</code> is simple in design. The client requests a resource, the resource is then returned by the origin
+                        server along with the following HTTP headers below.
+                        <code>HTTP 1.1</code> cache directives takes precedence override
+                        <code>HTTP 1.0</code> directives when a
+                        <code>HTTP 1.1</code> compatible client cache is making a request
+                    </p>
                     <table>
                         <thead>
                             <tr>
@@ -261,6 +269,10 @@
                     <h2>
                         Edge Architecture specification headers
                     </h2>
+                    <p>
+                        <code>Surrogate-Control</code> headers are part of the Edge Architecture Specification , which define cache directives for HTTP
+                        surrogates - intermediaries that act on behalf of an origin server such as gateway caches.
+                    </p>
                     <table>
                         <thead>
                             <tr>
@@ -337,6 +349,10 @@
                     <h2>
                         Other Cache information headers
                     </h2>
+                    <p>
+                        These
+                        <code>HTTP 1.1</code> headers provides miscellaneous cache information
+                    </p>
                     <table>
                         <thead>
                             <tr>
@@ -423,10 +439,9 @@
             <div class="row">
                 <div class="column">
                     <a name="HTTP1-1CacheDirectives"></a>
-                    <h2>
+                    <h3>
                         <code>HTTP 1.1</code> Cache-Control headers
-                    </h2>
-                    <p>These pages are intended to be cached</p>
+                    </h3>
                     <a name="CacheControlMustRevalidate"></a>
                     <iframe src="/cache_tests/CacheControlMustRevalidate.html"></iframe>
                     <a name="CacheControlNoCache"></a>
@@ -451,10 +466,9 @@
             <div class="row">
                 <div class="column">
                     <a name="#HTTP1-0CacheDirective"></a>
-                    <h2>
+                    <h3>
                         <code>HTTP 1.0</code> Cache-Control headers
-                    </h2>
-                    <p>These pages use methods that successfully prevent caching in at least one browser</p>
+                    </h3>
                     <a name="Expires"></a>
                     <iframe src="/cache_tests/Expires.html"></iframe>
                     <a name="PragmaNoCache"></a>
@@ -465,10 +479,9 @@
             <div class="row">
                 <div class="column">
                     <a name="EdgeArchitectureSpecificationHeaders"></a>
-                    <h2>
+                    <h3>
                         Edge Architecture specification headers
-                    </h2>
-                    <p>These pages use methods that fail to prevent caching in any browser</p>
+                    </h3>
                     <a name="SurrogateControlNoStore"></a>
                     <iframe src="/cache_tests/SurrogateControlNoStore.html"></iframe>
                     <a name="SurrogateControlNoStoreRemote"></a>
@@ -496,10 +509,9 @@
             <div class="row">
                 <div class="column">
                     <a name="NonHeadersIneffectiveCacheDirectives"></a>
-                    <h2>
+                    <h3>
                         Non Headers - Ineffective cache directives
-                    </h2>
-                    <p>These pages use methods that prevent caching in shared caches (e.g., proxies)</p>
+                    </h3>
                     <a name="MetaCacheControlNoStore"></a>
                     <iframe src="/cache_tests/MetaCacheControlNoStore.html"></iframe>
                     <a name="MetaPragmaNoCache"></a>
