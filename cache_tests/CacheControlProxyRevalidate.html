@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Code Syntax highlighting  -->
+  <script src="/js/highlight.pack.js"></script>
+  <title>Cache-Control: proxy-revalidate</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="column">
+          <h4>
+            Cache-Control: proxy-revalidate
+          </h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <h5>
+              <code>
+                CacheControlProxyRevalidate.html
+              </code>
+            </h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cache Type</th>
+                  <th>Will Cache?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Browser</td>
+                  <td>Yes, Ignore</td>
+                </tr>
+                <tr>
+                  <td>Proxy</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p>This header is part of the
+              <code>HTTP/1.1</code> standard and instructs proxy caches to verify the status of the stale resources before using it and expired ones should not be used, i.e. The proxy should check if the resource is fresh everytime the resource is needed, <strong>even if the expiration date has not been reached</strong>. This directive is ignored by private caches
+            </p>
+            <pre><code class="nginx">
+                    # Webserver config
+                    server {
+                        # ...
+                        location /CacheControlProxyRevalidate.html {
+                            add_header Cache-Control "proxy-revalidate";
+                            add_header "Expires" @1h; # Set expires to 1hr from now
+                        }
+                    }
+            </code></pre>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h6>Links to more information:</h6>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank">Cache-Control</a>
+          </li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="https://github.com/armsultan" target="_blank">:)</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

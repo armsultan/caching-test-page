@@ -70,12 +70,15 @@
               not. It is intended to apply to caching proxy servers that are shared by multiple users. With the exception
               of those browsers that do not cache HTTPS content at all, all browsers will write this page to the disk cache.
             </p>
+            <p>Browser cache will cache the resource for the allowable duration as set in a expiration directive such as <code>max-age</code>
+            </p>
             <pre><code class="nginx">
                     # Webserver config
                   server {
                       # ...
                       location /CacheControlPrivate.html {
                           add_header Cache-Control "private";
+                          expires 1h; # Set expires to 1hr from now
                       }
                   }
                     </code></pre>

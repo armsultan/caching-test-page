@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="/css/fonts.css">
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="/css/milligram_v2.css">
+    <!-- highlight JS syntax coloring -->
+    <link rel="stylesheet" href="/css/github.css">
+    <!-- Custom CSS Style -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Code Syntax highlighting  -->
+    <script src="/js/highlight.pack.js"></script>
+    <title>Surrogate-Control: max-age</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="column">
+                    <h4>
+                        Surrogate-Control: max-age
+                    </h4>
+                </div>
+            </div>
+        </header>
+        <main>
+            <article>
+                <div class="row">
+                    <div class="column">
+                        <h5>
+                            <code>
+                                SurrogateControlMaxAge.html
+                            </code>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cache Type</th>
+                                    <th>Will Cache?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Browser</td>
+                                    <td>Yes, Ignore</td>
+                                </tr>
+                                <tr>
+                                    <td>Proxy</td>
+                                    <td>Yes (Surrogates who support this directive)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <p> This page was sent with the
+                            <code>Surrogate-Control</code> response header allows origin servers to dictate how surrogates (i.e. gateway caches) should
+                            handle response entities, with control directives. This header is part of the <code>Edge Architecture Specification</code>, which extend the Web infrastructure through the use of HTTP surrogates - intermediaries that act on behalf of an origin server. Some popular gateway caches (i.e.
+                          <strong>Squid</strong> and
+                          <strong>Fastly</strong>) already support it. The gateway caches that don't support
+                          <code>Surrogate-Control</code> usually have their own custom header that works the same way (i.e.
+                          <strong>Akamai</strong> has
+                          <code></code>Edge-Control</code>).
+                        </p>
+                        <p>
+                            The <code>max-age</code> directive specifies how long the response entity can be considered fresh, in seconds. After this time, implementations must consider the cached entity stale.
+                        </p>
+                        <pre><code class="nginx">
+                      # Webserver config
+                      server {
+                          # ...
+                          location /SurrogateControl.html {
+                              add_header Surrogate-Control "max-age=3600";
+                      }
+                  </code></pre>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <h6>Links to more information:</h6>
+                <ul>
+                    <li>
+                        <a href="https://docs.fastly.com/guides/tutorials/cache-control-tutorial" target="_blank">Surrogate-Contro</a>
+                    </li>
+                </ul>
+            </aside>
+        </main>
+        <footer>
+            <div class="row">
+                <div class="column">
+                    <a href="https://github.com/armsultan" target="_blank">:)</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

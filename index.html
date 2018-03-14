@@ -32,104 +32,482 @@
                     <h5>Index</h5>
                     <ul>
                         <li>
-                            <a href="#CacheDirectives">Cache directives</a>
+                            <a href="#HTTP1-1CacheDirectives">
+                                <code>HTTP 1.1</code> Cache-Control headers</a>
                         </li>
                         <li>
-                            <a href="#NoCacheDirectives">No cache directives</a>
+                            <a href="#HTTP1-0CacheDirectives">
+                                <code>HTTP 1.0</code> Cache-Control headers</a>
                         </li>
                         <li>
-                            <a href="#IneffectiveCacheDirectives">Ineffective cache directives</a>
+                            <a href="#EdgeArchitectureSpecificationHeaders">Edge Architecture specification headers</a>
                         </li>
                         <li>
-                            <a href="#MaxAgeVsExpires">max-age vs expires</a>
+                            <a href="#OtherCacheInformationHeaders">Other Cache information headers</a>
                         </li>
                         <li>
-                            <a href="#CacheDirectivesForProxies">Cache directives for proxies (shared caches)</a>
-                        </li>
-                        <li>
-                            <a href="#CacheDirectivesForGateway">Cache directives for gateway caches (surrogate caches)</a>
+                            <a href="#NonHeadersIneffectiveCacheDirectives">Non Headers - Ineffective cache directives
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <h2>
+                        <code>HTTP 1.1</code> Cache-Control headers
+                    </h2>
+                    <blockquote>
+                        <p>
+                            <em>The Cache-Control general-header field is used to specify directives for caching mechanisms in
+                                both requests and responses. Caching directives are unidirectional, meaning that a given
+                                directive in a request is not implying that the same directive is to be given in the response
+                                -
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank">MDN</a>
+                            </em>
+                        </p>
+                    </blockquote>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>HTTP header</th>
+                                <th>Quick definition</th>
+                                <th>Browser cache?</th>
+                                <th>Proxy cache?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlMustRevalidate">
+                                        <code>
+                                            Cache-Control: must-revalidate
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>Cache MUST NOT use the entry after it becomes stale. A Cache will store for the allowable
+                                    time set in a expiration directive</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlNoCache">
+                                        <code>
+                                            Cache-Control: no-cache
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>DO NOT cache i.e must-revalidate after 0 seconds</td>
+                                <td>N</td>
+                                <td>N</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlNoStore">
+                                        <code>
+                                            Cache-Control: no-store
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>DO NOT cache anything about the client request or server response</td>
+                                <td>N</td>
+                                <td>N</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlNoTransform">
+                                        <code>
+                                            Cache-Control: no-transform
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>NO transformations or conversions should be made to the resource. A Cache will store for
+                                    the allowable time set in a expiration directive</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlPublic">
+                                        <code>
+                                            Cache-Control: public
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>Indicates that the response may be cached by any cache. A Cache will store for the allowable
+                                    time set in a expiration directive</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlPrivate">
+                                        <code>
+                                            Cache-Control: private
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>Only private caches (web browsers) may store the response. i.e. Not to be cached on shared
+                                    cache . Private Cache will store for the allowable time set in a expiration directive</td>
+                                <td>Y</td>
+                                <td>N</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlProxyRevalidate">
+                                        <code>Cache-Control: proxy-revalidate</code>
+                                    </a>
+                                </td>
+                                <td>Same as
+                                    <code>must-revalidate</code>, but it only applies to shared caches (e.g., proxies) and is ignored by a private cache.
+                                    A Cache will store for the allowable time set in a expiration directive</td>
+                                <td>Y, Ignore</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlMaxAge">
+                                        <code>
+                                        Cache-Control: max-age=&lt;seconds&gt;
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>Specifies the maximum amount of time a resource will be considered fresh. Contrary to Expires,
+                                    this directive is relative to the time of the request. Private cache will store when
+                                    <code>no-cache</code> and
+                                    <code>no-store</code> are absent and a Public cache will store
+                                    <code>private</code>,
+                                    <code>no-cache</code> and
+                                    <code>no-store</code> are absent</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#CacheControlSmaxage">
+                                        <code>
+                                        Cache-Control: s-maxage=&lt;seconds&gt;
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>Overrides max-age or the Expires header, but it only applies to shared caches (e.g., proxies)
+                                    and is ignored by a private cache. Public cache will store
+                                    <code>private</code>,
+                                    <code>no-cache</code> and
+                                    <code>no-store</code> are absent</td>
+                                <td>Y, Ignore</td>
+                                <td>Y</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <h2>
+                        <code>HTTP 1.0</code> Caching headers
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>HTTP header</th>
+                                <th>Quick definition</th>
+                                <th>Browser cache?</th>
+                                <th>Proxy cache?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#Expires">
+                                        <code>
+                                        Expires: &lt;http-date&gt;
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>Specifies the maximum amount of time a resource will be considered fresh using a date/time
+                                    stamp after which the response is considered stale. If there is a Cache-Control header
+                                    with the
+                                    <code>max-age</code> or
+                                    <code>s-maxage</code> directive in the response, the Expires header is ignored</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#PragmaNoCache">
+                                        <code>
+                                            Pragma: no-cache
+                                        </code>
+                                    </a>
+                                </td>
+                                <td> Not a reliable replacement for the general
+                                    <code>HTTP 1.1</code> Cache-Control header. Used for backwards compatibility with HTTP/1.0 caches where the
+                                    Cache-Control
+                                    <code>HTTP 1.1</code> header is not yet present</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <h2>
+                        Edge Architecture specification headers
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>HTTP header</th>
+                                <th>Quick definition</th>
+                                <th>Browser cache?</th>
+                                <th>Proxy cache?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#SurrogateControlNoStore">
+                                        <code>
+                                            Surrogate-Control: no-store
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>DO NOT cache anything about the client request or server response</td>
+                                <td>Y, Ignore</td>
+                                <td>N, surrogate caches</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#SurrogateControlNoStoreRemote">
+                                        <code>
+                                        Surrogate-Control: no-store-remote
+                                    </code>
+                                    </a>
+                                </td>
+                                <td> Similar semantics to the
+                                    <code>no-store</code> directive, except that it should only be honored by those surrogates that consider themselves
+                                    "remote". Generally, this means those that are more than one or two hops from the origin
+                                    server, such as surrogates in a CDN</td>
+                                <td>Y, Ignore</td>
+                                <td>N, remote surrogate caches</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#SurrogateControlMaxAge">
+                                        <code>
+                                            Surrogate-Control: max-age=&lt;seconds&gt;
+                                        </code>
+                                    </a>
+                                </td>
+                                <td> Specifies how long the response entity can be considered fresh. Optionally, a
+                                    <code>+</code> and a freshness extension can be appended, that specifies an additional period of time
+                                    (in seconds) the stale entity may be served, before it must be revalidated or refetched
+                                    as appropriate</td>
+                                <td>Y, Ignore</td>
+                                <td>Y, surrogate caches</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#SurrogateControlContent">
+                                        <code>
+                                        Surrogate-Control: content
+                                    </code>
+                                    </a>
+                                </td>
+                                <td> Identifies what processing surrogates should perform on the response before forwarding it.
+                                    The value of the content directive is a left-to-right ordered, space-separated list of
+                                    capabilities for processing by surrogates</td>
+                                <td>Y, Ignore</td>
+                                <td>Y, surrogate caches</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <h2>
+                        Other Cache information headers
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>HTTP header</th>
+                                <th>Quick definition</th>
+                                <th>Browser cache?</th>
+                                <th>Proxy cache?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#Age">
+                                        <code>
+                                            Age
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>Contains the time in seconds the object has been in a proxy cache</td>
+                                <td>Y</td>
+                                <td>Y</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <h2>
+                        Non Headers - Ineffective cache directives
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cache directive</th>
+                                <th>Quick definition</th>
+                                <th>Browser cache?</th>
+                                <th>Proxy cache?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#MetaCacheControlNoStore">
+                                        <code>
+                                            &lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-store&quot;&gt;
+                                        </code>
+                                    </a>
+                                </td>
+                                <td>No browsers or proxy caches will recognize the
+                                    <code>Cache-Control</code> header when it is specified in a meta tag (&lt;meta&gt;); it must be included as a "real"
+                                    HTTP response header.
+                                    <code>&lt;meta http-equiv&gt;</code>does not have a value
+                                    <code>Cache-Control</code>
+                                </td>
+                                <td>Y, Ignore</td>
+                                <td>N, Ignore</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#MetaPragmaNoCache">
+                                        <code>
+                                        &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;
+                                    </code>
+                                    </a>
+                                </td>
+                                <td>No browsers or proxy caches will recognize the
+                                    <code>Cache-Control</code> header when it is specified in a meta tag (&lt;meta&gt;); it must be included as a "real"
+                                    HTTP response header.
+                                    <code>&lt;meta http-equiv&gt;</code>does not have a value
+                                    <code>Cache-Control</code>
+                                </td>
+                                <td>Unreliable</td>
+                                <td>N, Ignore</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </nav>
+        <hr>
         <main>
             <div class="row">
                 <div class="column">
-                    <a name="CacheDirectives"></a>
+                    <a name="HTTP1-1CacheDirectives"></a>
                     <h2>
-                        Cache directives
+                        <code>HTTP 1.1</code> Cache-Control headers
                     </h2>
                     <p>These pages are intended to be cached</p>
-                    <iframe src="/cache_tests/NoHeaders.html"></iframe>
+                    <a name="CacheControlMustRevalidate"></a>
+                    <iframe src="/cache_tests/CacheControlMustRevalidate.html"></iframe>
+                    <a name="CacheControlNoCache"></a>
+                    <iframe src="/cache_tests/CacheControlNoCache.html"></iframe>
+                    <a name="CacheControlNoStore"></a>
+                    <iframe src="/cache_tests/CacheControlNoStore.html"></iframe>
+                    <a name="CacheControlNoTransform"></a>
+                    <iframe src="/cache_tests/CacheControlNoTransform.html"></iframe>
+                    <a name="CacheControlPublic"></a>
                     <iframe src="/cache_tests/CacheControlPublic.html"></iframe>
-
+                    <a name="CacheControlPrivate"></a>
+                    <iframe src="/cache_tests/CacheControlPrivate.html"></iframe>
+                    <a name="CacheControlProxyRevalidate"></a>
+                    <iframe src="/cache_tests/CacheControlProxyRevalidate.html"></iframe>
+                    <a name="CacheControlMaxAge"></a>
+                    <iframe src="/cache_tests/CacheControlMaxAge.html"></iframe>
+                    <a name="CacheControlSmaxage"></a>
+                    <iframe src="/cache_tests/CacheControlSmaxage.html"></iframe>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="column">
-                    <a name="NoCacheDirectives"></a>
+                    <a name="#HTTP1-0CacheDirective"></a>
                     <h2>
-                        No cache directives
+                        <code>HTTP 1.0</code> Cache-Control headers
                     </h2>
                     <p>These pages use methods that successfully prevent caching in at least one browser</p>
-                    <iframe src="/cache_tests/CacheControlNoStore.html"></iframe>
-                    <iframe src="/cache_tests/CacheControlNoCache.html"></iframe>
+                    <a name="Expires"></a>
+                    <iframe src="/cache_tests/Expires.html"></iframe>
+                    <a name="PragmaNoCache"></a>
                     <iframe src="/cache_tests/PragmaNoCache.html"></iframe>
-                    <iframe src="/cache_tests/MetaPragmaNoCache.html"></iframe>
-
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="column">
-                    <a name="IneffectiveCacheDirectives"></a>
-
+                    <a name="EdgeArchitectureSpecificationHeaders"></a>
                     <h2>
-                        Ineffective cache directives
+                        Edge Architecture specification headers
                     </h2>
                     <p>These pages use methods that fail to prevent caching in any browser</p>
-                    <iframe src="/cache_tests/MetaCacheControlNoStore.html"></iframe>
-                    <iframe src="/cache_tests/CacheControlPrivate.html"></iframe>
+                    <a name="SurrogateControlNoStore"></a>
+                    <iframe src="/cache_tests/SurrogateControlNoStore.html"></iframe>
+                    <a name="SurrogateControlNoStoreRemote"></a>
+                    <iframe src="/cache_tests/SurrogateControlNoStoreRemote.html"></iframe>
+                    <a name="SurrogateControlMaxAge"></a>
+                    <iframe src="/cache_tests/SurrogateControlMaxAge.html"></iframe>
+                    <a name="SurrogateControlContent"></a>
+                    <iframe src="/cache_tests/SurrogateControlContent.html"></iframe>
                 </div>
             </div>
-
+            <hr>
             <div class="row">
                 <div class="column">
-                    <a name="MaxAgeVsExpires"></a>
+                    <a name="OtherCacheInformationHeaders"></a>
                     <h2>
-                        max-age vs. expires
+                        Other Cache information headers
                     </h2>
                     <p>These directices set the maximum number of seconds the resource should be considered fresh
                     </p>
-                    <iframe src="/cache_tests/Expires.html"></iframe>
-                    <iframe src="/cache_tests/CacheControlMaxAge.html"></iframe>
+                    <a name="Age"></a>
+                    <iframe src="/cache_tests/Age.html"></iframe>
                 </div>
             </div>
-
+            <hr>
             <div class="row">
                 <div class="column">
-                    <a name="CacheDirectivesForProxies"></a>
+                    <a name="NonHeadersIneffectiveCacheDirectives"></a>
                     <h2>
-                        Cache directives for shared caches (proxy caches)
+                        Non Headers - Ineffective cache directives
                     </h2>
                     <p>These pages use methods that prevent caching in shared caches (e.g., proxies)</p>
-                    <iframe src="/cache_tests/CacheControlSmaxage.html"></iframe>
-                    <iframe src="/cache_tests/CacheControlPrivate.html"></iframe>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <a name="CacheDirectivesForGateway"></a>
-                    <h2>
-                        Cache directives for gateway caches (surrogate caches)
-                    </h2>
-                    <p>These pages use methods that applies to gateway caches (also known as surrogate caches)
-                    </p>
-                    <iframe src="/cache_tests/SurrogateControl.html"></iframe>
+                    <a name="MetaCacheControlNoStore"></a>
+                    <iframe src="/cache_tests/MetaCacheControlNoStore.html"></iframe>
+                    <a name="MetaPragmaNoCache"></a>
+                    <iframe src="/cache_tests/MetaPragmaNoCache.html"></iframe>
                 </div>
             </div>
         </main>
+        <hr>
         <footer>
             <div class="row">
                 <div class="column">
