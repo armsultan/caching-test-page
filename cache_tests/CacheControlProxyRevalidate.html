@@ -54,7 +54,10 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes</td>
+                  <td>Yes when
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td></td>
                 </tr>
               </tbody>
             </table>
@@ -73,10 +76,11 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlProxyRevalidate.html {
-                            add_header Cache-Control "proxy-revalidate";
-                            add_header "Expires" @1h; # Set expires to 1hr from now
-                        }
+                        location ~ /CacheControlProxyRevalidate.html {
+                          # Proxy cache must revalidate if stale
+                         add_header Cache-Control "public, proxy-revalidate";
+                         expires 10s; # Set expires to 10s from now
+                     }
                     }
             </code></pre>
           </div>

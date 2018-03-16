@@ -54,7 +54,10 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes (Surrogates who support this directive)</td>
+                  <td>Yes (Surrogates who support this directive) and when
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td></td>
                 </tr>
               </tbody>
             </table>
@@ -85,9 +88,11 @@
                     # Webserver config
                     server {
                         # ...
-                        location /SurrogateControlNoStore.html {
-                            add_header Surrogate-Control "content=ESI/1.0 ESI-Inline/1.0";
-                        }
+                        location ~ /SurrogateControlContent.html {
+                          add_header Cache-Control "public";
+                          expires 1h; # Set expires to 1hr from now
+                          add_header Surrogate-Control "content=ESI/1.0";
+                      }
                     }
             </code></pre>
           </div>

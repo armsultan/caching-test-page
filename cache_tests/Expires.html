@@ -87,9 +87,11 @@
                   # Webserver config
                   server {
                       # ...
-                      location /Expires.html {
-                        add_header "Expires" @1h; # Set expires to 1hr from now
-                      }
+                      location ~ /Expires.html {
+                        add_header Cache-Control "public";
+                        # Nginx will add Cache-Control:max-age along with expires header:
+                        expires 1h; # Set expires to 1hr from now
+                    }
                   }
                   </code></pre>
           </div>

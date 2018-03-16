@@ -54,14 +54,12 @@
                 <tr>
                   <td>Browser</td>
                   <td>Yes when
-                    <code>max-age</code> and
                     <code>no-cache</code>,
                     <code>no-store</code> are absent</td>
                 </tr>
                 <tr>
                   <td>Proxy</td>
                   <td>Yes when
-                    <code>max-age</code> and
                     <code>private</code>,
                     <code>no-cache</code>,
                     <code>no-store</code> are absent</td>
@@ -87,9 +85,9 @@
                   # Date header through $upsteam_http_date.
                   server {
                       # ...
-                      location /Age.html {
+                      location ~ /Age.html {
                         add_header X-Cache-Date $upstream_http_date;
-                      }
+                    }
                   }
                   </code></pre>
           </div>

@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes, with Expiration</td>
+                  <td>Yes</td>
                 </tr>
               </tbody>
             </table>
@@ -80,10 +80,10 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlPublic.html {
-                            add_header Cache-Control "public";
-                            expires 1h; # Set expires to 1hr from now
-                        }
+                        location ~ /CacheControlPublic.html {
+                          add_header Cache-Control "public";
+                          expires 1h; # Set expires to 1hr from now
+                      }
                     }
                     </code></pre>
           </div>

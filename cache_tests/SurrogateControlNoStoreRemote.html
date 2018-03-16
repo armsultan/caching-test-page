@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>No (Surrogates who consider themselves "remove" and who support this directive)</td>
+                  <td>No (Surrogates who consider themselves "remote" and who support this directive)</td>
                 </tr>
               </tbody>
             </table>
@@ -85,9 +85,12 @@
                     # Webserver config
                     server {
                         # ...
-                        location /SurrogateControlNoStore.html {
-                            add_header Surrogate-Control "no-store-remote";
-                        }
+                        location ~ /SurrogateControlNoStoreRemote.html {
+                          # Set no-store on remote surrogates and an hour for everything else
+                          add_header Cache-Control "public";
+                          expires 1h; # Set expires to 1hr from now
+                          add_header Surrogate-Control "no-store-remote";
+                      }
                     }
             </code></pre>
           </div>

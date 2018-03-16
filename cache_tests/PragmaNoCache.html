@@ -51,13 +51,12 @@
               <tbody>
                 <tr>
                   <td>Browser</td>
-                  <td>Yes - Legacy browsers with
+                  <td>Yes, Ignore for modern browsers.<br> No for Internet Explorer and Legacy browsers with
                     <code>HTTP/1.0</code> support only</td>
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes - Legacy caches with
-                    <code>HTTP/1.0</code> support only</td>
+                  <td>No, Ignore for  Modern browsers. <br>No for legacy caches with <code>HTTP/1.0</code> support only won't cache</td>
                 </tr>
               </tbody>
             </table>
@@ -79,9 +78,9 @@
             # Webserver config
             server {
                 # ...
-                location /PragmaNoCache.html {
+                location ~ /PragmaNoCache.html {
                   add_header Pragma "no-cache";
-                }
+              }
             }
         </code></pre>
           </div>

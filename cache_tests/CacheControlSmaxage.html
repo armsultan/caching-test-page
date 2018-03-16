@@ -93,10 +93,10 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlSmaxage.html {
-                            # Cache on proxies for 5min and no cache (0s) on the browser
-                            add_header Cache-Control "public, s-maxage=300, max-age=0";
-                        }
+                        location ~ /CacheControlSmaxage.html {
+                          # Cache on proxies for 5min and no cache (0s) on th browser
+                          add_header Cache-Control "public, s-maxage=300, max-age=0";
+                      }
                     }
                     </code></pre>
           </div>

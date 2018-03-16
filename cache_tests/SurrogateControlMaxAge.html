@@ -54,7 +54,10 @@
                                 </tr>
                                 <tr>
                                     <td>Proxy</td>
-                                    <td>Yes (Surrogates who support this directive)</td>
+                                    <td>Yes (Surrogates who support this directive) and when
+                                        <code>private</code>,
+                                        <code>no-cache</code>,
+                                        <code>no-store</code> are absent</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,9 +87,13 @@
                       # Webserver config
                       server {
                           # ...
-                          location /SurrogateControl.html {
-                              add_header Surrogate-Control "max-age=3600";
-                      }
+                          location ~ /SurrogateControlMaxAge.html {
+                            # Set expires on surrogates to 1hr and everything else for 10s
+                            add_header Cache-Control "public";
+                            expires 10s;
+                            add_header Surrogate-Control "max-age=3600";
+                            }
+                        }
                   </code></pre>
                     </div>
                 </div>

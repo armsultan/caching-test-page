@@ -77,10 +77,10 @@
                     # Webserver config
                   server {
                       # ...
-                      location /CacheControlPrivate.html {
-                          add_header Cache-Control "private";
-                          expires 1h; # Set expires to 1hr from now
-                      }
+                      location ~ /CacheControlPrivate.html {
+                        add_header Cache-Control "private";
+                        expires 1h; # Set expires to 1hr from now
+                    }
                   }
                     </code></pre>
           </div>

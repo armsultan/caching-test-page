@@ -54,7 +54,10 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes</td>
+                  <td>Yes, when
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td></td>
                 </tr>
               </tbody>
             </table>
@@ -80,10 +83,11 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlMustRevalidate.html {
-                            add_header Cache-Control "no-transform";
-                            add_header "Expires" @1h; # Set expires to 1hr from now
-                        }
+                        location ~ /CacheControlNoTransform.html {
+                          # No transformations or conversions should be made to the resource
+                          add_header Cache-Control "public, no-transform";
+                          expires 1h; # Set expires to 1hr from now
+                      }
                     }
             </code></pre>
           </div>

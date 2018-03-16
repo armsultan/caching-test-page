@@ -84,9 +84,12 @@
                     # Webserver config
                     server {
                         # ...
-                        location /SurrogateControlNoStore.html {
-                            add_header Surrogate-Control "no-store";
-                        }
+                        location ~ /SurrogateControlNoStore.html {
+                          # Set no-store on surrogates and an hour for everything else
+                          add_header Cache-Control "public";
+                          expires 1h; # Set expires to 1hr from now
+                          add_header Surrogate-Control "no-store";
+                      }
                     }
             </code></pre>
           </div>

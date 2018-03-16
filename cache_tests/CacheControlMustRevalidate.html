@@ -54,7 +54,10 @@
                 </tr>
                 <tr>
                   <td>Proxy</td>
-                  <td>Yes</td>
+                  <td>Yes, when
+                    <code>private</code>,
+                    <code>no-cache</code>,
+                    <code>no-store</code> are absent</td></td>
                 </tr>
               </tbody>
             </table>
@@ -66,8 +69,7 @@
           <div class="column">
             <p>This header is part of the
               <code>HTTP/1.1</code> standard and instructs the cache to verify the status of the stale resources before using it and expired ones
-              should not be used, i.e. The client should check if the resource is fresh everytime the resource is needed,
-              <strong>even if the expiration date has not been reached</strong>.
+              should not be used.  The cache <strong>MAY</strong> use a cached response in replying to a subsequent request. But if the response is stale, all caches <strong>MUST</strong> first revalidate it with the origin server
             </p>
             <p>
               This might still be a performance boost in most cases because if the resource has not been modified, the server will return
@@ -78,10 +80,11 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlMustRevalidate.html {
-                            add_header Cache-Control "must-revalidate";
-                            add_header "Expires" @1h; # Set expires to 1hr from now
-                        }
+                        location ~ /CacheControlMustRevalidate.html {
+                          # cache must revalidate if stale
+                          add_header Cache-Control "public, must-revalidate";
+                          expires 10s; # Set expires to 10s from now
+                      }
                     }
             </code></pre>
           </div>

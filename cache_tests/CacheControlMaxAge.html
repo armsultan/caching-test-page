@@ -78,9 +78,10 @@
                     # Webserver config
                     server {
                         # ...
-                        location /CacheControlMaxAge.html {
+                        location ~ /CacheControlMaxAge.html {
+                          add_header Cache-Control "public";
                           expires 1h; # Set expires to 1hr from now
-                        }
+                      }
                     }
                 </code></pre>
           </div>
