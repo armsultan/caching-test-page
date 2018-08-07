@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="HTTP and HTTPS caching test page">
+  <meta name="keywords" content="cache,proxy,cdn,test page, nginx, nginx plus">
+  <meta name="author" content="Armand Sultantono">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="/css/fonts.css">
+  <!-- Milligram CSS minified -->
+  <link rel="stylesheet" href="/css/milligram_v2.css">
+  <!-- highlight JS syntax coloring -->
+  <link rel="stylesheet" href="/css/github.css">
+  <script src="/js/highlight.pack.js"></script>
+  <title>Title</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <div class="row">
+        <div class="column">
+          <a href="/">Home</a> | <a href="/hello.html">Example hello</a>
+        </div>
+      </div>
+    </nav>
+    <div class="row">
+        <hr>
+    </div>
+    <header>
+            <div class="row">
+              <div class="column">
+                <h1>Hello!</h1>
+              </div>
+            </div>
+    </header>
+    <main>
+      <article>
+        <div class="row">
+          <div class="column">
+            <p>This is content on this page we will cache:</p>
+            <h5><code>Fonts stylesheet  - <a href="css/fonts.css" target="_blank">css/fonts.css</a> 8486 bytes</code></h5>
+            <h5><code>Layout stylesheet - <a href="css/milligram_v2.css" target="_blank">css/milligram_v2.css</a> 16185 bytes</code></h5>
+            <h5><code>Syntax stylesheet - <a href="css/github.css" target="_blank">css/github.css</a> 1148 bytes</code></h5>
+            <h5><code>Syntax stylesheet - <a href="js/highlight.pack.js" target="_blank">js/highlight.pack.js</a> 46071 bytes</code></h5>
+          </div>
+        </div>
+        <div class="row">
+                <div class="column">
+                  <h5><code>Happy squares -<a href="img/happy.jpg" target="_blank">img/happy.jpg</a> 2037 bytes</code></h5>
+                  <img src="img/happy.jpg" alt="happy squares"/>
+                  <img src="img/happy.jpg" alt="happy squares"/>
+                  <img src="img/happy.jpg" alt="happy squares"/>
+                  <img src="img/happy.jpg" alt="happy squares"/>
+                  <img src="img/happy.jpg" alt="happy squares"/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="column">
+                  <h5><code>Happy circles - <a href="img/happy.png" target="_blank">img/happy.png</a> 718 bytes</code></h5>
+                  <img src="img/happy.png" alt="happy circles"/>
+                  <img src="img/happy.png" alt="happy circles"/>
+                  <img src="img/happy.png" alt="happy circles"/>
+                  <img src="img/happy.png" alt="happy circles"/>
+                  <img src="img/happy.png" alt="happy circles"/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="column">
+                  <h5><code>Surfer - <a href="img/surfer_405KB.jpg" target="_blank">img/surfer_405KB.jpg</a> 404612 bytes (404.612 KB)</code></h5>
+                  <img src="img/surfer_405KB.jpg" alt="405KB surf" width="500"/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="column">
+                    <h5><code>Rooster - <a href="img/rooster_1MB.jpg" target="_blank">img/rooster_1MB.jpg</a> 1018852 bytes  (1.018852 MB)</code></h5>
+                    <img src="img/rooster_1MB.jpg" alt="1MB Rooster" width="500"/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="column">
+                <h5><code>Storm - <a href="img/tropical_depression_10-9MB.jpg" target="_blank">img/tropical_depression_10-9MB</a> 10914294 bytes (10.914294 MB)</code></h5>
+                <img src="img/tropical_depression_10-9MB.jpg" alt="10MB storm" width="500"/>
+                </div>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="row">
+        <div class="column">
+          By
+          <a href="https://github.com/armsultan" target="_blank">Armand</a> 2018
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
