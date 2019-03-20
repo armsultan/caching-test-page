@@ -17,7 +17,7 @@ You will need to inspect HTML and HTTP headers to confirm cache control directiv
 
  - [Chrome Developer Tools](https://developer.chrome.com/devtools)
  - [Firebug](http://getfirebug.com/)
- - [Fiddler](http://getfirebug.com/)
+ - [Fiddler](https://www.telerik.com/fiddler)
 
 #### A great list of online Tools
  - [16 Website Speed Test Tools for Analyzing Web Performance](https://www.keycdn.com/blog/website-speed-test-tools/)
