@@ -19,8 +19,8 @@ You will need to inspect HTML and HTTP headers to confirm cache control directiv
  - [Firebug](http://getfirebug.com/)
  - [Fiddler](http://getfirebug.com/)
 
-#### A great list of online Tools:**
+#### A great list of online Tools
  - [16 Website Speed Test Tools for Analyzing Web Performance](https://www.keycdn.com/blog/website-speed-test-tools/)
 
-**Credit and resources:**
+#### Credit
  - This test page is an adaptation of [HTTPS Caching Test Page](https://demo.securityevaluators.com/) by Jacob Thompson
